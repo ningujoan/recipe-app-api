@@ -1,0 +1,16 @@
+docker-compose run --rm app sh -c "python manage.py test && flake8"
+
+#new app
+docker-compose run app sh -c "python manage.py startapp core"
+
+#make migrations quan cambies algo dels models per a tenir la base de dades llesta
+docker-compose run app sh -c "python manage.py makemigrations core"
+
+#quan tens reuqirements nous
+docker compose build
+
+git add .
+git commit -a
+git push origin
+
+
